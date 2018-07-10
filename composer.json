@@ -1,0 +1,31 @@
+{
+    "name": "n2boost/laravel-doctrine-mapping",
+    "type": "library",
+    "require": {
+        "doctrine/orm": "^2.6"
+
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lihao",
+            "email": "lihao@n2boost.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+      "psr-4": {
+        "N2boost\\LaravelDoctrineMapping\\": "src"
+      },
+      "files": [
+        "src/helpers.php"
+      ]
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "N2boost\\LaravelDoctrineMapping\\LaravelDoctrineMappingServiceProvider"
+        ]
+      }
+    }
+}

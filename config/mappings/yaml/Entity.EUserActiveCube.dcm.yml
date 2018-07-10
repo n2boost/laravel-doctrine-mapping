@@ -1,0 +1,31 @@
+Entity\EUserActiveCube:
+    type: entity
+    table: e_user_active_cube
+    options:
+        charset: utf8
+        collate: utf8_general_ci
+        comment: 用户活跃矩阵
+    indexes:
+        idx_userId:
+            columns:
+                - userId
+                - date
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: userId
+        date:
+            type: date
+            nullable: false

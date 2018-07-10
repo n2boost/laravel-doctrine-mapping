@@ -1,0 +1,7 @@
+{
+
+    "require": {
+        "n2boost/laravel-doctrine-mapping": "dev-master",
+        "symfony/yaml": "^4.1"
+    }
+}

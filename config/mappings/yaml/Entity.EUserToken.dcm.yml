@@ -1,0 +1,64 @@
+Entity\EUserToken:
+    type: entity
+    table: e_user_token
+    options:
+        charset: utf8
+        collate: utf8_general_ci
+        comment: 用户Token记录表
+    indexes:
+        idx_userId:
+            columns:
+                - userId
+        idx_action:
+            columns:
+                - action
+        idx_expiredAt:
+            columns:
+                - expiredAt
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: userId
+        token:
+            type: text
+            nullable: false
+            options:
+                comment: token
+        action:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                comment: 类型:web-login|web-wechat-register|web-wechat-login|mobile-wechat-login|web-wechat-register|admin-login
+        expiresIn:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+                comment: 失效时长
+            column: expiresIn
+        issuedAt:
+            type: datetime
+            nullable: false
+            options:
+                comment: 发行时间
+            column: issuedAt
+        expiredAt:
+            type: datetime
+            nullable: true
+            options:
+                comment: 失效时间
+            column: expiredAt

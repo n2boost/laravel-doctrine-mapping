@@ -1,0 +1,29 @@
+Entity\MUserFollowUser:
+    type: entity
+    table: m_user_follow_user
+    options:
+        charset: utf8
+        collate: utf8_general_ci
+        comment: 用户关注表
+    indexes:
+        idx_createdAt:
+            columns:
+                - createdAt
+    id:
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: userId
+        targetUserId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: targetUserId
+    fields:
+        createdAt:
+            type: datetime
+            nullable: false
+            column: createdAt

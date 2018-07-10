@@ -1,0 +1,193 @@
+Entity\EUser:
+    type: entity
+    table: e_user
+    options:
+        charset: utf8mb4
+        collate: utf8mb4_general_ci
+        comment: 用户表
+    indexes:
+        idx_nickname:
+            columns:
+                - nickname
+        idx_gender:
+            columns:
+                - gender
+        idx_fromSource:
+            columns:
+                - fromSource
+        idx_status:
+            columns:
+                - status
+        idx_baseRole:
+            columns:
+                - baseRole
+    uniqueConstraints:
+        uniq_uuid:
+            columns:
+                - uuid
+        uniq_username:
+            columns:
+                - username
+        uniq_email:
+            columns:
+                - email
+        uniq_mobile:
+            columns:
+                - mobile
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        uuid:
+            type: string
+            nullable: false
+            length: 64
+        username:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                comment: 唯一用户名
+        nickname:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                comment: 昵称
+        nicknameEncode:
+            type: string
+            nullable: true
+            options:
+                comment: base64编码
+            column: nicknameEncode
+        email:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                comment: 用户邮箱:用于登录|用于联系
+        mobile:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                comment: 用户手机:用于登录|用于联系
+        password:
+            type: string
+            nullable: true
+            length: 255
+        avatar:
+            type: string
+            nullable: true
+            length: 255
+        gender:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                comment: gender:unset|male|female|secret
+                default: unset
+        intro:
+            type: string
+            nullable: true
+            length: 1024
+            options:
+                comment: intro|bio
+        fromSource:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                comment: fromSource:admin-create|web-wechat|ios-wechat|android-wechat
+                default: web-wechat
+            column: fromSource
+        status:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                comment: status:active|disabled|deleted
+                default: active
+        baseRole:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                comment: baseRole:user|staff
+                default: user
+            column: baseRole
+        createdAt:
+            type: datetime
+            nullable: false
+            column: createdAt
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updatedAt
+        cntFollower:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntFollower
+        cntFollowing:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntFollowing
+        cntPost:
+            type: integer
+            nullable: false
+            options:
+                default: 0
+            column: cntPost
+        cntView:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntView
+        cntGetLike:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntGetLike
+        cntLike:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntLike
+        cntCollect:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntCollect
+        cntCollection:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: 0
+            column: cntCollection
+        guideViewed:
+            type: string
+            nullable: false
+            options:
+                default: ''
+            column: guideViewed
