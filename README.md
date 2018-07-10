@@ -60,42 +60,60 @@ You can publish the config file with:
 php artisan vendor:publish --provider="N2boost\LaravelDoctrineMapping\LaravelDoctrineMappingServiceProvider::class" --tag="config"
 ```
 
+If it doesn't works, please type:
+
+```bash
+php artisan vendor:publish
+```
+
+And select the true number options.
+
 When published, [the `config/laravel-doctrine-mapping.php` config file](https://github.com/spatie/laravel-permission/blob/master/config/permission.php) contains:
 
 ```php
 return [
+
+    /*
+     * Mapping Config Engines.
+     * Can set to: yaml
+     */
+
     'mapping_type' => 'yaml',
-    'mapping_file_dir' => '',
-    'entities_file_dir' => '',
+
+    /*
+     * Mapping config files dir
+     * full path will like this example: config/mappings/yaml/User.dcm.yml
+     */
+    'mapping_file_dir' => 'config/mappings',
+
+    'entities_file_dir' => 'resources/classes',
+
     'profile' => 'local',
     'isDevMode' => true,
+
+    'use_connection_pool' => 'laravel', // laravel, self
     'connection' => 'mysql',
+
+    'connections' => [
+        'mysql' => [
+            'driver' => 'pdo_mysql',
+            'host' => '127.0.0.1',
+            'port' => 3306,
+            'user' => 'root',
+            'password' => '',
+            'dbname' => 'hunter',
+            'charset' => 'utf8mb4',
+            'collate' => 'utf8mb4_unicode_ci',
+        ]
+    ]
 ];
 ```
 
-### Lumen
+If you use `yaml` config file engine, please install this dependence:
 
-You can install the package via Composer:
-
-``` bash
-composer require n2boost/laravel-doctrine-mapping dev-master
 ```
-
-Copy the required files:
-
-```bash
-cp vendor/n2boost/laravel-permission/config/laravel_doctrine_mapping.php config/laravel-doctrine-mapping.php
+composer require symfony/yaml
 ```
-
-As well as the configuration and the service provider:
-
-```php
-$app->configure('laravel_doctrine_mapping');
-$app->register(N2boost\LaravelDoctrineMapping\LaravelDoctrineMappingServiceProvider::class);
-```
-
-Now, define your orm files in `path`.
-
 
 ## Usage
 
@@ -107,7 +125,15 @@ Now, define your orm files in `path`.
 
 ### Generate Entities
 
+```
+php artisan n2boost:orm:generate-entities
+```
+
 ### Sync Database
+
+```
+php artisan n2boost:orm:scheme-tool:update
+```
 
 ### Sponsor
 
@@ -133,3 +159,5 @@ Command Lines
 Tools 
 
 composer remove symfony/yaml
+composer require symfony/yaml
+
