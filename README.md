@@ -137,7 +137,7 @@ php artisan n2boost:orm:scheme-tool:update
 
 ### Sponsor
 
-文档参考
+文档参考:
 
 [Laravel 5.5 Package Development – Markus Tripp – Medium](https://medium.com/@markustripp/laravel-5-5-package-development-e72f3e7a8f38)
 [How to create a Laravel 5 package in 10 easy steps - Laravel Daily](https://laraveldaily.com/how-to-create-a-laravel-5-package-in-10-easy-steps/)
