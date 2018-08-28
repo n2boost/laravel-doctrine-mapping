@@ -19,7 +19,13 @@ trait OrmFunctions
         }
 
         if ($config['use_connection_pool'] === 'laravel') {
-            $mysql_connection = config('database.connections.mysql');
+            $mysql_connections = config('database.connections');
+            if (isset($config['connection'])) {
+              $con = $config['connection'];
+            } else {
+              $con = "mysql";
+            }
+            $mysql_connection = $mysql_connections[$con];
             $database_config = [
                 'driver' => 'pdo_mysql',
                 'host' => $mysql_connection['host'],
