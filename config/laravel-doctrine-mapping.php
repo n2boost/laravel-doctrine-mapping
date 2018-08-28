@@ -34,5 +34,63 @@ return [
             'charset' => 'utf8mb4',
             'collate' => 'utf8mb4_unicode_ci',
         ]
+    ],
+
+    'active' => 'default',
+
+    "profiles" => [
+        'default' => [
+            'mapping_type' => 'yaml',
+
+            'mapping_file_dir' => 'config/mapping-pools/juzicon',
+
+            'entities_file_dir' => 'resources/classes/juzicon',
+
+            'use_connection_pool' => 'laravel', // laravel, self
+            'connection' => 'mysql',
+
+            'profile' => 'local',
+            'isDevMode' => true,
+
+            'connections' => [
+                'mysql' => [
+                    'driver' => 'pdo_mysql',
+                    'host' => '127.0.0.1',
+                    'port' => 3306,
+                    'user' => 'root',
+                    'password' => '',
+                    'dbname' => 'hunter',
+                    'charset' => 'utf8mb4',
+                    'collate' => 'utf8mb4_unicode_ci',
+                ]
+            ],
+        ],
+
+        'n2boost' => [
+            'mapping_type' => 'yaml',
+
+            'mapping_file_dir' => 'config/mapping-pools/juzicon',
+
+            'entities_file_dir' => 'resources/classes/juzicon',
+
+            'use_connection_pool' => 'laravel', // laravel, self
+            'connection' => 'mysql',
+
+            'profile' => 'local',
+            'isDevMode' => true,
+
+            'connections' => [
+                'mysql' => [
+                    'driver' => 'pdo_mysql',
+                    'host' => '127.0.0.1',
+                    'port' => 3306,
+                    'user' => 'root',
+                    'password' => '',
+                    'dbname' => 'hunter',
+                    'charset' => 'utf8mb4',
+                    'collate' => 'utf8mb4_unicode_ci',
+                ]
+            ],
+        ]
     ]
 ];

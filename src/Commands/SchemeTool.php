@@ -10,13 +10,15 @@ class SchemeTool extends Command
 {
     use OrmFunctions;
 
-    protected $signature = 'n2boost:orm:scheme-tool:update';
+    protected $signature = 'n2boost:orm:scheme-tool:update {--profile=default}';
 
     protected $description = 'Create a doctrine-mapping file';
 
     public function handle()
     {
-        $em = $this->getEntityManager();
+        $profile_value = $this->option('profile');
+
+        $em = $this->getEntityManager($profile_value);
         $metadatas = $this->getMetaData($em);
 
         $schemaTool = new SchemaTool($em);

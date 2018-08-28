@@ -11,19 +11,20 @@ class GenerateEntities extends Command
 {
     use OrmFunctions;
 
-    protected $signature = 'n2boost:orm:generate-entities';
+    protected $signature = 'n2boost:orm:generate-entities {--profile=default}';
 
     protected $description = 'Create a doctrine-mapping file';
 
     public function handle()
     {
         $config = config('laravel-doctrine-mapping');
+        $profile_value = $this->option('profile');
 
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager($profile_value);
         $metadatas = $this->getMetaData($em);
 
-        $classes_dir = base_path($config['entities_file_dir']);
-
+        $profile_data = $config['profiles'][$profile_value];
+        $classes_dir = base_path($profile_data['entities_file_dir']);
         $destPath = $classes_dir;
 
         $entityGenerator = new EntityGenerator();
